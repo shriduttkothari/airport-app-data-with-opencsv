@@ -161,6 +161,14 @@ Below URls can be opened in browser or postman once the app is up and running (t
 
 	http://localhost:8080/flights?for=2022-06-29
 	
+## Screenshots:
+
+Screenshots of API output are available under screenshots directory of this repository
+
+![Postman Test Execution](screenshots/postman_execution.PNG)
+
+![Postman Test Results](screenshots/postman_test_results.PNG)
+
 ## Desclaimer:
 
 - Completed Project is implemented solely by:

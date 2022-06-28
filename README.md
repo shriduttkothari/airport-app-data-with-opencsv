@@ -85,6 +85,7 @@ To build and run this project below are the prerequisites
 	Java 8
 	Junit 5
 	Lombok
+	Open CSV 5.2
 	
 ## Project Structure:
 	airport-app-parent

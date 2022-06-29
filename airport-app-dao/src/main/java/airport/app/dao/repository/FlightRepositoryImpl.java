@@ -21,7 +21,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class FlightRepositoryImpl implements FlightRepository {
 
-	private static final List<Flight> availableFlights = new ArrayList<>();
+	private static final List<Flight> AVAILABLE_FLIGHTS = new ArrayList<>();
 
 	@Autowired
 	private CsvReader csvReader;
@@ -31,18 +31,18 @@ public class FlightRepositoryImpl implements FlightRepository {
 
 	@Override
 	public void saveFlights(List<? extends Flight> items) {
-		availableFlights.addAll(items);
+		AVAILABLE_FLIGHTS.addAll(items);
 	}
 
 	@Override
 	public List<Flight> getAllFlights() {
-		return availableFlights;
+		return AVAILABLE_FLIGHTS;
 	}
 
 	@Override
 	public List<Flight> getFlightsForGivenDayOfWeek(DayOfWeek dayOfTheWeek) throws NoFlightAvailableException {
 
-		return availableFlights.stream().filter(flight -> flight.getAvailableOnDayOfWeek().contains(dayOfTheWeek))
+		return AVAILABLE_FLIGHTS.stream().filter(flight -> flight.getAvailableOnDayOfWeek().contains(dayOfTheWeek))
 				.collect(Collectors.toList());
 
 	}
@@ -52,7 +52,7 @@ public class FlightRepositoryImpl implements FlightRepository {
 		List<FlightFromCsv> flightFromCsvList = csvReader.readFlightFromCsv();
 		List<Flight> fightList = csvFlightMapper.mapFlightsFromCSVToFlights(flightFromCsvList);
 		if (null != fightList) {
-			availableFlights.addAll(fightList);
+			AVAILABLE_FLIGHTS.addAll(fightList);
 		} else {
 			log.error("Could not load Flight details from CSV!!");
 		}
